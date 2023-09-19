@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% from 'bootstrap5/table.html' import render_table %}
+{% block title %}Restaurants{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12">
+            <h1>All Cafes</h1>
+            <table class="table table-dark table-striped table-hover">
+                <thead>
+                <tr>
+                    <th>Maps Link</th>
+                    <th>Name</th>
+                    <th>Coffee Rating</th>
+                    <th>Wifi Rating</th>
+                    <th>Power Rating</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for cafe in cafes %}
+                <tr>
+                    <td><a href="{{ cafe.map_url }}" alt="Google Maps Link">Maps Link</a></td>
+
+                    <td>{{ cafe.name }}</td>
+                    <td>{{ cafe.coffee_rating }}</td>
+                    <td>{{ cafe.wifi_rating }}</td>
+                    <td>{{ cafe.power_rating }}</td>
+                </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+
+
+        </div>
+    </div>
+</div>
+{% endblock %}

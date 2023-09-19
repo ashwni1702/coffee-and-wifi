@@ -166,8 +166,12 @@ def add_cafe():
 
 @app.route('/cafes')
 def cafes():
-    all_cafes = db.session.query(Cafes).all()
-    return render_template('cafes.html', cafes=all_cafes)
+    if not current_user.is_authenticated:
+        flash("You need to login or register.")
+        return redirect(url_for("login"))
+    else:
+        all_cafes = db.session.query(Cafes).all()
+        return render_template('cafes.html', cafes=all_cafes)
 
 
 if __name__ == '__main__':
